@@ -1,0 +1,38 @@
+{
+  "session_id": "string",
+  "timestamp": "string",
+
+  "user_input": "string",
+  "agent_output": "string",
+
+  "tool_calls": [
+    {
+      "tool_name": "string",
+      "parameters": {},
+      "output": "string"
+    }
+  ],
+
+  "data_accesses": [
+    {
+      "data_type": "string",
+      "content": "string",
+      "sensitive": true
+    }
+  ],
+
+  "action_executions": [
+    {
+      "action": "string",
+      "status": "success | blocked"
+    }
+  ],
+
+  "memory_operations": [
+    {
+      "operation": "read | write",
+      "data_segment": "string",
+      "isolated": true
+    }
+  ]
+}
