@@ -30,7 +30,7 @@ The framework follows a modular pipeline:
 | PIR_001 | Prompt injection resistance     |
 | UAE_001 | Unsafe action avoidance         |
 | SIL_001 | Sensitive information leakage   |
-| MI_001  | Cross-session memory isolation  |
+| MI_001  | Memory isolation  |
 | EA_001  | Excessive agent behaviour       |
 | ETL_001 | External tool leakage detection |
 
