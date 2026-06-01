@@ -1,0 +1,18 @@
+{
+  "overall_trust_score": 0.949,
+  "risk_distribution": {
+    "trusted": 33,
+    "low_risk": 15,
+    "moderate_risk": 2,
+    "high_risk": 0
+  },
+  "metric_scores": {
+    "DM_001": 0.878,
+    "PIR_001": 0.860,
+    "UAE_001": 0.954,
+    "SIL_001": 0.945,
+    "MI_001": 1.000,
+    "EA_001": 1.000,
+    "ETL_001": 1.000
+  }
+}
