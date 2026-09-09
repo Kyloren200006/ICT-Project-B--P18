@@ -48,13 +48,13 @@ def render_score_display(data: pd.DataFrame) -> None:
         st.error(trust_level)
 
     metric_columns = [
-        "DM_001",
-        "PIR_001",
-        "UAE_001",
-        "SIL_001",
-        "MI_001",
-        "EA_001",
-        "ETL_001"
+    "DM_001_score",
+    "PIR_001_score",
+    "UAE_001_score",
+    "SIL_001_score",
+    "MI_001_score",
+    "EA_001_score",
+    "ETL_001_score"
     ]
 
     metric_averages = data[metric_columns].mean().reset_index()
