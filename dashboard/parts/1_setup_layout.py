@@ -13,6 +13,7 @@ st.markdown("# 🔐 Trust Evaluation Dashboard")
 st.markdown("Upload your agent logs to evaluate trust, privacy, and security risks in real time.")
 st.divider()
 
+# Sidebar
 with st.sidebar:
     st.header("📋 Instructions")
     st.markdown("""
