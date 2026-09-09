@@ -1,6 +1,3 @@
-import pandas as pd
-import streamlit as st
-
 
 def render_score_display(data: pd.DataFrame) -> None:
     if data is None or data.empty:
@@ -48,13 +45,13 @@ def render_score_display(data: pd.DataFrame) -> None:
         st.error(trust_level)
 
     metric_columns = [
-    "DM_001_score",
-    "PIR_001_score",
-    "UAE_001_score",
-    "SIL_001_score",
-    "MI_001_score",
-    "EA_001_score",
-    "ETL_001_score"
+        "DM_001_score",
+        "PIR_001_score",
+        "UAE_001_score",
+        "SIL_001_score",
+        "MI_001_score",
+        "EA_001_score",
+        "ETL_001_score"
     ]
 
     metric_averages = data[metric_columns].mean().reset_index()
