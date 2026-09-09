@@ -13,7 +13,6 @@ st.markdown("# 🔐 Trust Evaluation Dashboard")
 st.markdown("Upload your agent logs to evaluate trust, privacy, and security risks in real time.")
 st.divider()
 
-# Sidebar (exactly as you wanted, with a small addition)
 with st.sidebar:
     st.header("📋 Instructions")
     st.markdown("""
