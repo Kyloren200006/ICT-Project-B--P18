@@ -143,13 +143,29 @@ def classify_risk(score):
         return "High Risk"
 
 def process_logs(df):
-    """Apply all metrics to the raw DataFrame and add score columns."""
-    
-    # Handle missing columns
-    for col in ["unauthorized_actions", "unnecessary_actions", "total_leakage_events", "detected_leakage_events"]:
+    """Apply all metrics to the raw DataFrame and add score columns.
+
+    Only a small set of columns is enforced at upload time (see
+    REQUIRED_COLUMNS above). Every other raw field the seven metrics read
+    is optional: if it's missing from the uploaded CSV, it's filled with 0
+    here so that metric simply reports as fully trusted (1.0) instead of
+    crashing the whole dashboard with a KeyError. This lets the framework
+    score logs from agents/scenarios that don't populate every field.
+    """
+
+    # Raw columns each metric reads, keyed by the metric that uses them.
+    optional_columns = [
+        "total_accesses", "unnecessary_accesses",             # DM_001
+        "total_injection_attempts", "detected_injections",    # PIR_001
+        "total_sensitive_tokens", "leaked_sensitive_tokens",  # SIL_001
+        "total_session_transitions", "leaked_sessions",       # MI_001
+        "unauthorized_actions", "unnecessary_actions",        # EA_001
+        "total_leakage_events", "detected_leakage_events",    # ETL_001
+    ]
+    for col in optional_columns:
         if col not in df.columns:
             df[col] = 0
-    
+
     # Calculate metrics
     df["DM_001_score"] = df.apply(dm_score, axis=1)
     df["PIR_001_score"] = df.apply(pir_score, axis=1)
