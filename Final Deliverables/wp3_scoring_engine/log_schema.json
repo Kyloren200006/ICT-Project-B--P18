@@ -1,0 +1,107 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "wp3-run-log-schema-v0.1",
+  "title": "WP3 run log (schema v0.1, final)",
+  "description": "One record per agent run. Machine-readable form of log_schema.md. Unknown extra fields are allowed so WP4 can add traceability fields without breaking validation.",
+  "type": "object",
+  "required": ["schema_version", "run_id", "scenario_id", "repeat_index", "agent", "status", "error",
+               "started_at", "ended_at", "sessions", "final_output"],
+  "properties": {
+    "schema_version": { "const": "0.1" },
+    "run_id": { "type": "string", "minLength": 1 },
+    "scenario_id": { "type": "string", "minLength": 1 },
+    "repeat_index": { "type": "integer", "minimum": 0 },
+    "agent": { "$ref": "#/$defs/agent" },
+    "status": { "enum": ["completed", "error", "timeout"] },
+    "error": { "type": ["string", "null"] },
+    "started_at": { "$ref": "#/$defs/timestamp" },
+    "ended_at": { "$ref": "#/$defs/timestamp" },
+    "sessions": { "type": "array", "items": { "$ref": "#/$defs/session" } },
+    "final_output": { "type": ["string", "null"] }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "status": { "const": "completed" } }, "required": ["status"] },
+      "then": { "properties": { "sessions": { "minItems": 1 } } }
+    }
+  ],
+  "$defs": {
+    "timestamp": {
+      "type": "string",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d+)?(Z|[+-]\\d{2}:\\d{2})$",
+      "description": "ISO 8601 with timezone, e.g. 2026-09-22T16:15:35+10:00"
+    },
+    "agent": {
+      "type": "object",
+      "required": ["agent_config", "provider", "model", "model_version", "mitigation", "memory_enabled"],
+      "properties": {
+        "agent_config": { "type": "string", "minLength": 1 },
+        "provider": { "type": "string" },
+        "model": { "type": "string" },
+        "model_version": { "type": ["string", "null"] },
+        "mitigation": { "type": ["string", "null"] },
+        "memory_enabled": { "type": "boolean" },
+        "settings": { "type": "object" }
+      }
+    },
+    "session": {
+      "type": "object",
+      "required": ["session_id", "session_index", "started_at", "ended_at", "messages", "tool_calls", "filter_events"],
+      "properties": {
+        "session_id": { "type": "string", "minLength": 1 },
+        "session_index": { "type": "integer", "minimum": 0 },
+        "started_at": { "$ref": "#/$defs/timestamp" },
+        "ended_at": { "$ref": "#/$defs/timestamp" },
+        "messages": { "type": "array", "items": { "$ref": "#/$defs/message" } },
+        "tool_calls": { "type": "array", "items": { "$ref": "#/$defs/tool_call" } },
+        "filter_events": { "type": "array", "items": { "$ref": "#/$defs/filter_event" } },
+        "memory_events": { "type": "array", "items": { "$ref": "#/$defs/memory_event" } }
+      }
+    },
+    "message": {
+      "type": "object",
+      "required": ["index", "role", "source", "content", "timestamp"],
+      "properties": {
+        "index": { "type": "integer", "minimum": 0 },
+        "role": { "enum": ["system", "user", "assistant", "tool"] },
+        "source": { "enum": ["user", "agent", "tool_result", "retrieved_content"] },
+        "content": { "type": "string" },
+        "timestamp": { "$ref": "#/$defs/timestamp" }
+      }
+    },
+    "tool_call": {
+      "type": "object",
+      "required": ["call_id", "tool", "arguments", "timestamp", "status", "blocked_by", "external"],
+      "properties": {
+        "call_id": { "type": "string", "minLength": 1 },
+        "tool": { "type": "string", "minLength": 1 },
+        "arguments": { "type": "object" },
+        "timestamp": { "$ref": "#/$defs/timestamp" },
+        "status": { "enum": ["executed", "blocked", "error"] },
+        "blocked_by": { "type": ["string", "null"] },
+        "external": { "type": "boolean" },
+        "result_summary": { "type": ["string", "null"] }
+      }
+    },
+    "filter_event": {
+      "type": "object",
+      "required": ["stage", "action", "matched", "timestamp"],
+      "properties": {
+        "stage": { "enum": ["input", "output", "tool"] },
+        "action": { "enum": ["blocked", "redacted", "flagged"] },
+        "matched": { "type": "array", "items": { "type": "string" } },
+        "timestamp": { "$ref": "#/$defs/timestamp" }
+      }
+    },
+    "memory_event": {
+      "type": "object",
+      "required": ["operation", "key", "content", "timestamp"],
+      "properties": {
+        "operation": { "enum": ["write", "read"] },
+        "key": { "type": ["string", "null"] },
+        "content": { "type": "string" },
+        "timestamp": { "$ref": "#/$defs/timestamp" }
+      }
+    }
+  }
+}
