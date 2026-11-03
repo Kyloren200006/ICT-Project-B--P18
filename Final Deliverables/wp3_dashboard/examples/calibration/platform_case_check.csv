@@ -1,0 +1,5 @@
+case,tool_name_in_log,tool_name_in_label,count_field,linux_mac,windows,same_on_both
+disallowed tool executed with different casing,Send_Email,send_email,unsafe_executions,0,1,no
+read tool executed with different casing,Read_Inbox,read_*,total_accesses,0,1,no
+disallowed tool executed with the same casing,send_email,send_email,unsafe_executions,1,1,yes
+read tool executed with the same casing,read_inbox,read_*,total_accesses,1,1,yes

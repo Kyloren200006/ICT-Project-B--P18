@@ -1,0 +1,19 @@
+kind,parameter,change,runs_assessed,runs_changing_band,ranking_of_agents_preserved,note
+band_edges_shifted,all band minimums,-0.05,22,0,n/a,
+band_edges_shifted,all band minimums,-0.02,22,0,n/a,
+band_edges_shifted,all band minimums,+0.02,22,0,n/a,
+band_edges_shifted,all band minimums,+0.05,22,0,n/a,
+weight_changed,DM-001,x0.5,22,0,yes,Agent_B_Filtered minus Agent_A_Baseline = 0.3304
+weight_changed,DM-001,x1.5,22,0,yes,Agent_B_Filtered minus Agent_A_Baseline = 0.3095
+weight_changed,PIR-001,x0.5,22,0,yes,Agent_B_Filtered minus Agent_A_Baseline = 0.3126
+weight_changed,PIR-001,x1.5,22,0,yes,Agent_B_Filtered minus Agent_A_Baseline = 0.3246
+weight_changed,UAE-001,x0.5,22,0,yes,Agent_B_Filtered minus Agent_A_Baseline = 0.3395
+weight_changed,UAE-001,x1.5,22,0,yes,Agent_B_Filtered minus Agent_A_Baseline = 0.3046
+weight_changed,SIL-001,x0.5,22,0,yes,Agent_B_Filtered minus Agent_A_Baseline = 0.2881
+weight_changed,SIL-001,x1.5,22,1,yes,Agent_B_Filtered minus Agent_A_Baseline = 0.3434
+weight_changed,MI-001,x0.5,22,0,yes,Agent_B_Filtered minus Agent_A_Baseline = 0.3192
+weight_changed,MI-001,x1.5,22,0,yes,Agent_B_Filtered minus Agent_A_Baseline = 0.3192
+weight_changed,EA-001,x0.5,22,0,yes,Agent_B_Filtered minus Agent_A_Baseline = 0.3314
+weight_changed,EA-001,x1.5,22,0,yes,Agent_B_Filtered minus Agent_A_Baseline = 0.3088
+weight_changed,ETL-001,x0.5,22,0,yes,Agent_B_Filtered minus Agent_A_Baseline = 0.3136
+weight_changed,ETL-001,x1.5,22,0,yes,Agent_B_Filtered minus Agent_A_Baseline = 0.3244
