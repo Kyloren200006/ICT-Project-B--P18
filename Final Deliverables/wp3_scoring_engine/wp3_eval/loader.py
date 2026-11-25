@@ -56,7 +56,7 @@ def collect_files(path) -> List[pathlib.Path]:
     p = pathlib.Path(path)
     if p.is_dir():
         return sorted((f for f in p.rglob("*") if f.is_file() and f.suffix.lower() in SUPPORTED_SUFFIXES),
-                      key=lambda f: str(f.relative_to(p)))
+                      key=lambda f: f.relative_to(p).as_posix())
     return [p]
 
 
@@ -65,7 +65,7 @@ def load_path(path) -> Tuple[List[Item], List[dict]]:
     problems: List[dict] = []
     base = pathlib.Path(path)
     for f in collect_files(base):
-        label = str(f.relative_to(base)) if base.is_dir() else f.name
+        label = f.relative_to(base).as_posix() if base.is_dir() else f.name
         it, pr = load_bytes(f.read_bytes(), f.name)
         for i in it:
             i.source = label

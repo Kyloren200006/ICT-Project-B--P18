@@ -336,9 +336,11 @@ def check_runs(runs, defs, tol=2e-6):
             n_score_checked += 1
             exp = recompute_metric(m, r.counts)
             got = r.scores.get(m.id)
-            if got is None and exp is not None and r.raw.get("label_source") == "heuristic":
+            declared = split_ids(r.raw.get("metrics_not_measured"))
+            if got is None and exp is not None and (r.raw.get("label_source") == "heuristic" or m.id in declared):
                 # The engine leaves metrics that need scenario labels blank when the scenario has
-                # no label (label_source = heuristic). That is a designed rule, not a mismatch.
+                # no label (label_source = heuristic), or when the scenario's label lacks the column that
+                # metric needs (the engine then lists it in metrics_not_measured). Both are designed rules.
                 n_unlabelled += 1
                 continue
             ok = (exp is None and got is None) or (

@@ -168,7 +168,7 @@ def write_outputs(out_dir, cfg: Config, result: ScoreResult) -> Dict[str, str]:
     paths["scored_runs_csv"] = str(p)
 
     p = out / "scored_runs.json"
-    p.write_text(json.dumps([{k: r.get(k) for k in columns} for r in rows], indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    p.write_text(json.dumps([{k: r.get(k) for k in columns} for r in rows], indent=2, ensure_ascii=False) + "\n", encoding="utf-8", newline="\n")
     paths["scored_runs_json"] = str(p)
 
     p = out / "run_inventory.csv"
@@ -180,6 +180,6 @@ def write_outputs(out_dir, cfg: Config, result: ScoreResult) -> Dict[str, str]:
     paths["run_inventory_csv"] = str(p)
 
     p = out / "summary.json"
-    p.write_text(json.dumps(summarise(cfg, result), indent=2) + "\n", encoding="utf-8")
+    p.write_text(json.dumps(summarise(cfg, result), indent=2) + "\n", encoding="utf-8", newline="\n")
     paths["summary_json"] = str(p)
     return paths

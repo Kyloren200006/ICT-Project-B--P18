@@ -4,4 +4,5 @@ Put your own files here and the dashboard uses them instead of the bundled examp
   input/calibration/      the "results" folder from the calibration and validation package
 
 Anything not found here falls back to the matching file in ../examples/.
-Then run:  streamlit run streamlit_app.py   (or: py dashboard.py)
+Then run:  py -m streamlit run streamlit_app.py   (or: py dashboard.py)
+To view results without copying, upload the file in the Streamlit sidebar or use: py dashboard.py --scored <file>

@@ -9,11 +9,11 @@ chart (`wp3_dash/`), and show the same six pages:
 
 | | Streamlit app | No-install launcher |
 |---|---|---|
-| Start with | `streamlit run streamlit_app.py` | `py dashboard.py` |
+| Start with | `py -m streamlit run streamlit_app.py` | `py dashboard.py` |
 | Needs | `streamlit`, `pandas`, `PyYAML` | `PyYAML` only |
 | Extras | sidebar file upload, sidebar filters, CSV download of the runs table | hover tooltips on charts, a static copy of every page (`--export`), runs with no internet |
 
-Written for Python 3.9 or later (tested on 3.13). Install what you need with `py -m pip install -r requirements.txt`.
+Needs Python 3.10 or later (tested on 3.13 and 3.14). Install what you need with `py -m pip install -r requirements.txt`.
 
 ## 1. Run it
 
@@ -23,13 +23,15 @@ From this folder.
 
 ```
 py -m pip install -r requirements.txt
-streamlit run streamlit_app.py
+py -m streamlit run streamlit_app.py
 ```
 
 Streamlit opens a browser tab (usually http://localhost:8501). The sidebar has the file settings, an upload box for a
 scored file, the chart colour choice and the Agent / Workflow / Scenario type filters. With no changes it uses `input/`
 when files are there and falls back to the bundled `examples/` (the 22-run WP3 test pack and its calibration results).
 When it is showing the bundled examples, a notice at the top says so.
+
+**To show WP4's results**, use "Upload a scored file" in the sidebar and choose `wp3_scoring_engine\output\scored_runs.csv`, or start the launcher with `--scored` as below. Leave `input/` empty: the tests expect it to hold only `README.txt`.
 
 **No-install launcher**
 
@@ -117,19 +119,16 @@ The Streamlit tests are skipped if pandas is not installed.
 
 ## 7. Limits and honest notes
 
-- **The Streamlit app has not been run in real Streamlit by its author.** It was written and tested in an
-  environment where Streamlit could not be installed. Its tables and charts are tested directly, and the script was run
-  against a stand-in `streamlit` module that records the calls it makes. That finds mistakes in this project's code;
-  it cannot show that every call works in your Streamlit version (Streamlit's functions change between releases). Run
-  `streamlit run streamlit_app.py`, click through the six tabs and compare them with the launcher's pages. If a Streamlit
-  call fails in your version, the launcher shows the same content.
+- **Streamlit versions.** The app has been run in Streamlit on Windows. Its automated tests check the tables and charts
+  directly and run the script against a stand-in `streamlit` module, so they pass without Streamlit installed.
+  Streamlit's functions change between releases; if a call fails in a newer version, the launcher (`py dashboard.py`)
+  shows the same content.
 - **Plotly is not used.** Charts are drawn as SVG by `wp3_dash/charts.py` (shared by both front ends) and shown with
   `st.image`, so the Streamlit app does not depend on Plotly.
 - **The Sprint 4-5 dashboard** (the older `dashboard.py` at the top of the repository, which scored raw logs itself)
   is superseded. This dashboard does not score anything: it shows what the scoring engine wrote.
-- **Tested on Linux, Python 3.13.** The tests and screenshots were produced on Linux with headless Chromium. The code uses only
-  portable calls and UTF-8 files, but it has not been run on Windows by the author of this package. The screenshots in
-  `docs/screenshots/` are of the launcher's pages.
+- **Tested on Linux and Windows.** The tests pass on Linux (Python 3.13) and Windows (Python 3.14). The screenshots in
+  `docs/screenshots/` were taken on Linux with headless Chromium and are of the launcher's pages.
 - **Local only.** The launcher listens on `127.0.0.1` by default, has no login and serves read-only pages. Do not expose it on a
   network without adding access control.
 - **The calibration section describes the WP3 test pack and probes.** Showing it beside real WP4 results does not make

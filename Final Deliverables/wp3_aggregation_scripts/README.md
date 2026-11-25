@@ -2,11 +2,11 @@
 
 `aggregate_summaries.py` is the aggregation and summary script of the WP3 evaluation framework (team P18, ICT30018). It reads the per-run scores written by the WP3 scoring engine and writes summaries **per agent, per workflow and per risk** (and per scenario), as **CSV and JSON**. No manual steps, and the same input always gives the same output.
 
-This is a separate deliverable from the scoring engine (`wp3_scoring_engine.zip`). The engine scores each run; this script summarises those scores. They are connected only by the engine's output file, `scored_runs.csv`. This folder runs on its own, with the sample files in `examples/`.
+This is a separate deliverable from the scoring engine (`wp3_scoring_engine`). The engine scores each run; this script summarises those scores. They are connected only by the engine's output file, `scored_runs.csv`. This folder runs on its own, with the sample files in `examples/`.
 
 ## 1. Requirements and install
 
-- Python 3 (tested on 3.13 and 3.14).
+- Python 3.10 or later (tested on 3.13 and 3.14).
 - One package, in `requirements.txt`: PyYAML. Nothing else.
 
 Open a terminal **inside this folder** (in VS Code: File > Open Folder, then Terminal > New Terminal) and install once:
@@ -155,6 +155,6 @@ The exit code is 0 on success and 1 on any error. On Windows use `py`; on Mac or
 | `examples/` | A sample `scored_runs.csv` (22 runs, two agents), its `run_inventory.csv`, a sample `scenario_lookup.csv`, and `expected_output/` with the five files the quick start should reproduce |
 | `tests/` | 35 automated tests with hand-calculated expected values |
 
-## 9. When the real WP4 results arrive
+## 9. WP4's results
 
-Run the scoring engine on WP4's logs, then run this script on the engine's `scored_runs.csv` (section 3). The summaries are the numbers for the evaluation reports and the dashboard. If WP2's final scenario index has different headers or risk tags, use `--map` or update the lookup; no code changes are needed. If WP3 changes a weight, band or risk link, change it in `metric_definitions.yaml` (and in the engine's copy) and re-run both.
+`output/` holds the summaries for WP4's November 2026 runs, made with the Option B command in section 3; they are the same files as in `Evaluation Reports/`. For new runs, run the scoring engine first, then this script on the engine's `scored_runs.csv` (section 3). The summaries are the numbers for the evaluation reports and the dashboard. If WP2's final scenario index has different headers or risk tags, use `--map` or update the lookup; no code changes are needed. If WP3 changes a weight, band or risk link, change it in `metric_definitions.yaml` (and in the engine's copy) and re-run both.

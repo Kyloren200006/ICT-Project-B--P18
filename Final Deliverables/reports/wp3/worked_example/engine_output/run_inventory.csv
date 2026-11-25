@@ -1,0 +1,3 @@
+source,run_id,scenario_id,status,detail
+worked_example_runs.json,worked-001,EMAIL-WORKED-001,scored,
+worked_example_runs.json,worked-002,EMAIL-WORKED-002,scored,

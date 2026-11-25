@@ -1,0 +1,5 @@
+command,seconds,exit_code
+score the engine's 3 example runs (score_logs.py),0.14,0
+aggregate the 22-run test pack (aggregate_summaries.py),0.08,0
+calibration: score both validation sets and compare (run_calibration.py),0.19,0
+dashboard: export all 13 pages (dashboard.py --export),0.12,0

@@ -1,0 +1,12 @@
+node,label,kind
+logs,WP4 run logs,input
+loader,loader.py,code
+extract,extract.py,code
+metrics,metrics.py,code
+scoring,scoring.py,code
+lookup,WP2 scenario labels,input
+rules,detection_rules.yaml,config
+defs,metric_definitions.yaml,config
+out,Engine output files,output
+agg,aggregate_summaries.py,code
+dash,streamlit_app.py,code

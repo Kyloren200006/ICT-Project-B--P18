@@ -1,0 +1,15 @@
+metric_id,change,agent_gap,ranking_preserved,runs_changing_band
+DM-001,x0.5,0.3304,yes,0
+DM-001,x1.5,0.3095,yes,0
+PIR-001,x0.5,0.3126,yes,0
+PIR-001,x1.5,0.3246,yes,0
+UAE-001,x0.5,0.3395,yes,0
+UAE-001,x1.5,0.3046,yes,0
+SIL-001,x0.5,0.2881,yes,0
+SIL-001,x1.5,0.3434,yes,1
+MI-001,x0.5,0.3192,yes,0
+MI-001,x1.5,0.3192,yes,0
+EA-001,x0.5,0.3314,yes,0
+EA-001,x1.5,0.3088,yes,0
+ETL-001,x0.5,0.3136,yes,0
+ETL-001,x1.5,0.3244,yes,0

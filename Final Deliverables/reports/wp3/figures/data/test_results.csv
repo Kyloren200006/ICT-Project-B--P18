@@ -1,0 +1,6 @@
+suite,folder,tests_run,failures,errors,skipped,seconds,python,result
+scoring engine,wp3_scoring_engine,42,0,0,0,0.7,3.13.18,pass
+aggregation scripts,wp3_aggregation_scripts,35,0,0,0,0.6,3.13.18,pass
+calibration and validation,wp3_calibration,17,0,0,0,0.6,3.13.18,pass
+dashboard,wp3_dashboard,58,0,0,0,3.0,3.13.18,pass
+TOTAL,,152,0,0,0,,3.13.18,pass

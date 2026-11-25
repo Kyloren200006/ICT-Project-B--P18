@@ -1,0 +1,13 @@
+from,to,label
+logs,loader,run records
+loader,extract,valid runs
+extract,metrics,counts
+metrics,scoring,scores
+scoring,out,rows
+out,agg,scored_runs.csv
+out,dash,scored_runs.csv
+agg,dash,summaries
+lookup,extract,labels
+rules,extract,rules
+defs,metrics,formulas
+defs,scoring,"weights, bands"

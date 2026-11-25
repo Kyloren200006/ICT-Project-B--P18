@@ -1,0 +1,21 @@
+{
+  "calibration_version": "1.0.0",
+  "engine_version": "1.0.0",
+  "metric_definitions_version": "1.0.0",
+  "no_data_behaviour": "not_measured",
+  "datasets": {
+    "pack": {
+      "runs_in_truth": 22,
+      "engine_inventory": {
+        "scored": 22,
+        "excluded_failed_run": 1
+      }
+    },
+    "probes": {
+      "runs_in_truth": 39,
+      "engine_inventory": {
+        "scored": 39
+      }
+    }
+  }
+}

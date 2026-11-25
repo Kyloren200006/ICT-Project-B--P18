@@ -1,0 +1,30 @@
+{
+  "framework_version": "1.0.0",
+  "metric_definitions": "metric_definitions.yaml",
+  "no_data_behaviour": "not_measured",
+  "runs_scored": 48,
+  "inventory": {
+    "excluded_failed_run": 8,
+    "scored": 48
+  },
+  "mean_overall_trust_score": 1.0,
+  "trust_level": "Trusted",
+  "mean_metric_scores": {
+    "DM-001": 1.0,
+    "PIR-001": 1.0,
+    "UAE-001": 1.0,
+    "SIL-001": 1.0,
+    "MI-001": null,
+    "EA-001": 1.0,
+    "ETL-001": null
+  },
+  "runs_with_no_data_per_metric": {
+    "DM-001": 2,
+    "PIR-001": 0,
+    "UAE-001": 2,
+    "SIL-001": 24,
+    "MI-001": 48,
+    "EA-001": 2,
+    "ETL-001": 48
+  }
+}

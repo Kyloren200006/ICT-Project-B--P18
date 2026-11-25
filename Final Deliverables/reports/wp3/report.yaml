@@ -1,0 +1,230 @@
+# WP3 technical report manifest. Paths are relative to the root of the WP3 delivery.
+wp: WP3
+title: 'WP3 Technical Report: Evaluation Framework and Metrics'
+subtitle: 'Trust benchmark for agentic AI: metrics, scoring engine, aggregation, dashboard and validation'
+authors:
+- Sandev Fernando (WP3 lead)
+- Sebastian Haney
+- Suhash Barani Prem
+version: 1.0.0
+framework_version: Evaluation Framework v1.0.0 (metric definitions v1.0.0, scoring engine v1.0.0)
+date: '2026-11-23'
+team: P18, ICT30018
+status:
+  complete:
+  - metric definitions
+  - log schema v0.1
+  - scoring engine
+  - aggregation scripts
+  - calibration and validation report
+  - metrics dashboard
+  - technical report
+  - test pack
+  not_yet_produced:
+  - item: evaluation reports
+    depends_on: WP4 full run logs in schema v0.1 and WP2 machine-readable scenario labels
+  - item: final evaluation package (.zip)
+    depends_on: assembled last, to match the tagged release
+ids_covered:
+  metrics:
+  - DM-001
+  - PIR-001
+  - UAE-001
+  - SIL-001
+  - MI-001
+  - EA-001
+  - ETL-001
+  risks:
+  - TC1
+  - TC2
+  - TC3
+  - TC4
+  - TC5
+  - TC6
+  scenarios_in_test_data:
+  - EMAIL-ADV-001
+  - EMAIL-BEN-001
+  - EMAIL-ETL-001
+  - EMAIL-LEAK-001
+  - FILE-DM-001
+  - FILE-MEM-001
+  - SCHED-BEN-001
+  - SCHED-EA-001
+  - WEB-ADV-001
+  - WEB-BEN-001
+  - EMAIL-WORKED-001
+  - EMAIL-WORKED-002
+  agent_configurations_in_test_data:
+  - Agent_A_Baseline
+  - Agent_B_Filtered
+  note: Risk IDs are WP1's threat IDs TC1 to TC6. Scenario and agent IDs listed are from WP3's own test data, not
+    from WP2/WP4's suites.
+links:
+  code:
+  - wp3_scoring_engine/
+  - wp3_aggregation_scripts/
+  - wp3_calibration/
+  - wp3_dashboard/
+  - reports/wp3/scripts/
+  data:
+  - wp3_scoring_engine/metric_definitions.yaml
+  - wp3_scoring_engine/log_schema.json
+  - wp3_scoring_engine/detection_rules.yaml
+  - wp3_calibration/validation/
+  - wp3_aggregation_scripts/examples/
+  - reports/wp3/figures/data/
+  - reports/wp3/worked_example/
+  results:
+  - wp3_calibration/results/
+  - wp3_calibration/calibration_validation_report.md
+  - wp3_aggregation_scripts/examples/expected_output/
+  dashboard: wp3_dashboard/streamlit_app.py (streamlit run streamlit_app.py); no-install launcher wp3_dashboard/dashboard.py
+    (py dashboard.py, http://127.0.0.1:8765)
+tests:
+  total: 152
+  engine: 42
+  aggregation: 35
+  calibration: 17
+  dashboard: 58
+  python: 3.13.18
+files:
+- path: reports/wp3/figures/dashboard/01_overview.png
+  purpose: Dashboard screenshot (section 9)
+- path: reports/wp3/figures/dashboard/02_metric_definitions.png
+  purpose: Dashboard screenshot (section 9)
+- path: reports/wp3/figures/dashboard/03_score_distributions.png
+  purpose: Dashboard screenshot (section 9)
+- path: reports/wp3/figures/dashboard/04_metric_detail_SIL-001.png
+  purpose: Dashboard screenshot (section 9)
+- path: reports/wp3/figures/dashboard/05_runs.png
+  purpose: Dashboard screenshot (section 9)
+- path: reports/wp3/figures/dashboard/06_calibration.png
+  purpose: Dashboard screenshot (section 9)
+- path: reports/wp3/figures/dashboard/07_data_and_checks.png
+  purpose: Dashboard screenshot (section 9)
+- path: reports/wp3/figures/dashboard/08_overview_filtered_agent_A.png
+  purpose: Dashboard screenshot (section 9)
+- path: reports/wp3/figures/dashboard/09_overview_dark.png
+  purpose: Dashboard screenshot (section 9)
+- path: reports/wp3/figures/data/agreement_stats.csv
+  purpose: Data behind a figure or table
+- path: reports/wp3/figures/data/command_timings.csv
+  purpose: Data behind a figure or table
+- path: reports/wp3/figures/data/fig01_architecture.csv
+  purpose: Data behind a figure or table
+- path: reports/wp3/figures/data/fig01_architecture_edges.csv
+  purpose: Data behind a figure or table
+- path: reports/wp3/figures/data/fig02_weights_thresholds.csv
+  purpose: Data behind a figure or table
+- path: reports/wp3/figures/data/fig03_pack_score_distributions.csv
+  purpose: Data behind a figure or table
+- path: reports/wp3/figures/data/fig04_precision_recall.csv
+  purpose: Data behind a figure or table
+- path: reports/wp3/figures/data/fig05_overall_agreement.csv
+  purpose: Data behind a figure or table
+- path: reports/wp3/figures/data/fig06_probe_outcomes.csv
+  purpose: Data behind a figure or table
+- path: reports/wp3/figures/data/fig07_weight_sensitivity.csv
+  purpose: Data behind a figure or table
+- path: reports/wp3/figures/data/fig08_agent_metric_means.csv
+  purpose: Data behind a figure or table
+- path: reports/wp3/figures/data/test_results.csv
+  purpose: Data behind a figure or table
+- path: reports/wp3/figures/fig01_architecture.png
+  purpose: Figure (editable .svg or .png)
+- path: reports/wp3/figures/fig01_architecture.svg
+  purpose: Figure (editable .svg or .png)
+- path: reports/wp3/figures/fig02_weights_thresholds.png
+  purpose: Figure (editable .svg or .png)
+- path: reports/wp3/figures/fig02_weights_thresholds.svg
+  purpose: Figure (editable .svg or .png)
+- path: reports/wp3/figures/fig03_pack_score_distributions.png
+  purpose: Figure (editable .svg or .png)
+- path: reports/wp3/figures/fig03_pack_score_distributions.svg
+  purpose: Figure (editable .svg or .png)
+- path: reports/wp3/figures/fig04_precision_recall.png
+  purpose: Figure (editable .svg or .png)
+- path: reports/wp3/figures/fig04_precision_recall.svg
+  purpose: Figure (editable .svg or .png)
+- path: reports/wp3/figures/fig05_overall_agreement.png
+  purpose: Figure (editable .svg or .png)
+- path: reports/wp3/figures/fig05_overall_agreement.svg
+  purpose: Figure (editable .svg or .png)
+- path: reports/wp3/figures/fig06_probe_outcomes.png
+  purpose: Figure (editable .svg or .png)
+- path: reports/wp3/figures/fig06_probe_outcomes.svg
+  purpose: Figure (editable .svg or .png)
+- path: reports/wp3/figures/fig07_weight_sensitivity.png
+  purpose: Figure (editable .svg or .png)
+- path: reports/wp3/figures/fig07_weight_sensitivity.svg
+  purpose: Figure (editable .svg or .png)
+- path: reports/wp3/figures/fig08_agent_metric_means.png
+  purpose: Figure (editable .svg or .png)
+- path: reports/wp3/figures/fig08_agent_metric_means.svg
+  purpose: Figure (editable .svg or .png)
+- path: reports/wp3/references.bib
+  purpose: Bibliography (BibTeX)
+- path: reports/wp3/report.docx
+  purpose: The report (Word)
+- path: reports/wp3/report.md
+  purpose: The report (Markdown, same content)
+- path: reports/wp3/report.yaml
+  purpose: Manifest
+- path: reports/wp3/report_src/01_executive_summary.md
+  purpose: The report's text sources, one file per section
+- path: reports/wp3/report_src/02_objectives_scope.md
+  purpose: The report's text sources, one file per section
+- path: reports/wp3/report_src/03_background.md
+  purpose: The report's text sources, one file per section
+- path: reports/wp3/report_src/04_method.md
+  purpose: The report's text sources, one file per section
+- path: reports/wp3/report_src/05_implementation.md
+  purpose: The report's text sources, one file per section
+- path: reports/wp3/report_src/06_outputs_results.md
+  purpose: The report's text sources, one file per section
+- path: reports/wp3/report_src/07_validation.md
+  purpose: The report's text sources, one file per section
+- path: reports/wp3/report_src/08_integration.md
+  purpose: The report's text sources, one file per section
+- path: reports/wp3/report_src/09_dashboard.md
+  purpose: The report's text sources, one file per section
+- path: reports/wp3/report_src/10_reproducibility.md
+  purpose: The report's text sources, one file per section
+- path: reports/wp3/report_src/11_limitations.md
+  purpose: The report's text sources, one file per section
+- path: reports/wp3/report_src/12_future_work.md
+  purpose: The report's text sources, one file per section
+- path: reports/wp3/report_src/13_references.md
+  purpose: The report's text sources, one file per section
+- path: reports/wp3/report_src/14_appendices.md
+  purpose: The report's text sources, one file per section
+- path: reports/wp3/scripts/agreement_stats.py
+  purpose: Accuracy, precision, recall, kappa from the calibration results
+- path: reports/wp3/scripts/build_report.py
+  purpose: Builds this report from report_src/ and the data files
+- path: reports/wp3/scripts/check_report.py
+  purpose: Checks the report against the files it cites
+- path: reports/wp3/scripts/make_figures.py
+  purpose: Regenerates the figures and their data
+- path: reports/wp3/scripts/make_worked_example.py
+  purpose: Builds the worked example and checks the engine against the hand calculation
+- path: reports/wp3/scripts/run_all_tests.py
+  purpose: Runs the four test suites and timings
+- path: reports/wp3/scripts/style_docx.py
+  purpose: ''
+- path: reports/wp3/summary.txt
+  purpose: Plain-text abstract (at most 300 words)
+- path: reports/wp3/worked_example/engine_output/run_inventory.csv
+  purpose: Two worked run logs, their scenario labels, the engine's output and the hand calculation
+- path: reports/wp3/worked_example/engine_output/scored_runs.csv
+  purpose: Two worked run logs, their scenario labels, the engine's output and the hand calculation
+- path: reports/wp3/worked_example/engine_output/scored_runs.json
+  purpose: Two worked run logs, their scenario labels, the engine's output and the hand calculation
+- path: reports/wp3/worked_example/engine_output/summary.json
+  purpose: Two worked run logs, their scenario labels, the engine's output and the hand calculation
+- path: reports/wp3/worked_example/hand_calculation.csv
+  purpose: Two worked run logs, their scenario labels, the engine's output and the hand calculation
+- path: reports/wp3/worked_example/worked_example_lookup.csv
+  purpose: Two worked run logs, their scenario labels, the engine's output and the hand calculation
+- path: reports/wp3/worked_example/worked_example_runs.json
+  purpose: Two worked run logs, their scenario labels, the engine's output and the hand calculation

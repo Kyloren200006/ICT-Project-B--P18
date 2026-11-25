@@ -6,7 +6,7 @@ The per-agent, per-workflow and per-risk summaries are a separate deliverable (t
 
 ## 1. Requirements and install
 
-- Python 3 (tested on 3.13 and 3.14).
+- Python 3.10 or later (tested on 3.13 and 3.14).
 - Two packages, listed in `requirements.txt`: PyYAML and jsonschema.
 
 Open a terminal **inside this folder** (in VS Code: File > Open Folder, then Terminal > New Terminal) and install once:
@@ -44,13 +44,13 @@ Put the files in these folders:
 | `input/logs/` | WP4's run logs: one or many `.json` or `.jsonl` files in the run-log format (`log_schema.json`). Sub-folders are scanned too. |
 | `input/scenarios/` | The scenario lookup file from WP2, named `scenario_lookup.csv` (format in section 5). |
 
-Then run one command:
+WP4's November 2026 runs are already in `input/logs/wp4/`, with the matching lookup in `input/scenarios/`. Run one command:
 
 ```
 py score_logs.py
 ```
 
-Results are written to `output/`. To use other locations, give the paths. The first one can be a single log file or a whole folder:
+Results are written to `output/`. On the delivered files this prints 48 runs scored and 8 excluded (failed runs), and the files in `output/` are identical to those in `Evaluation Reports/`. To use other locations, give the paths. The first one can be a single log file or a whole folder:
 
 ```
 py score_logs.py path/to/logs_or_file --scenarios path/to/scenario_lookup.csv --out path/to/results
@@ -111,9 +111,9 @@ If WP2's file uses different headers, map them instead of editing it: `--map wor
 
 Which labels each metric needs: Data Minimisation needs `allowed_data`; Unsafe Action needs `disallowed_tools` or `forbidden_markers`; Excessive Agency needs `permitted_tools` or `expected_tools`; Sensitive Information Leakage and External Tool Leakage need `sensitive_items`; Memory Isolation needs `cross_session_items`; Prompt Injection Resistance needs the injection labels. Without the labels, that metric is "not measured" for that scenario.
 
-## 6. When real WP4 logs and WP2 labels arrive
+## 6. Scoring new WP4 runs
 
-1. Put the logs in `input/logs/` and the lookup file in `input/scenarios/`. Check that the scenario IDs in the logs appear in the lookup file.
+1. Put the new logs in `input/logs/` and make sure every scenario they use has a row in `input/scenarios/scenario_lookup.csv`, with its sensitive items and forbidden markers filled in from WP2's failure criteria.
 2. Run `py score_logs.py`.
 3. Open `run_inventory.csv`. Fix or ask WP4 about anything that is `invalid_schema`.
 4. Look at `metrics_not_measured` in `scored_runs.csv`. Many "not measured" entries mean labels are missing or the scenario IDs do not match.
@@ -142,10 +142,10 @@ Which labels each metric needs: Data Minimisation needs `allowed_data`; Unsafe A
 | `metric_definitions.yaml` | The seven metrics: formulas, weights, thresholds, risk bands and linked WP1 threat IDs. The engine reads all of its rules from here. |
 | `detection_rules.yaml` | Rules that turn a raw run log into metric counts. |
 | `log_schema.json` | The run-log format WP4 emits. Every record is validated against it. |
-| `input/logs/`, `input/scenarios/` | Where real logs and the lookup file go. |
-| `output/` | Created when you run it. |
+| `input/logs/`, `input/scenarios/` | The run logs and the scenario lookup. Holds WP4's November 2026 runs (`input/logs/wp4/`) and their lookup. |
+| `output/` | The scores for WP4's runs. Rewritten every time you run `py score_logs.py`. |
 | `examples/` | Two sample run logs and a sample scenario lookup to try the engine on. |
-| `tests/` | Automated tests (38). |
+| `tests/` | Automated tests (42). |
 | `requirements.txt` | The packages to install. |
 
 ## 9. How scoring works
@@ -168,7 +168,7 @@ The engine uses no randomness, no clock and no network, so the same input and ru
 
 ## 11. Known limits
 
-- The engine has been tested on example and synthetic data. Final scores on the full set of WP4 runs are reported in the evaluation reports once WP4's full logs and WP2's machine-readable scenario labels are available.
+- The engine has been validated on a hand-labelled test pack, 39 probe runs and WP4's 56 real runs (see `wp3_calibration/` and `Evaluation Reports/`). WP4's runs cover two email scenarios; other scenarios need their lookup rows completed before their runs are scored.
 - The detection rules are simple text and structure checks (matching listed items, tool names and scopes). They do not judge meaning. They may need tuning against labelled logs; the calibration and validation report records how they performed and any false positives and negatives. Tuning is a change to `detection_rules.yaml`, not to the code.
 - Where labels are missing, the metric is reported as not measured and is not guessed.
 - Run logs with the wrong shape are listed as `invalid_schema` and not scored. Runs that did not complete are listed as `excluded_failed_run`.

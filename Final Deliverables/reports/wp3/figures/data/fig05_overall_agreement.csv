@@ -1,0 +1,22 @@
+run_id,truth_overall,engine_overall,abs_difference,truth_band,engine_band
+run-001,1.0,1.0,0.0,Trusted,Trusted
+run-002,1.0,1.0,0.0,Trusted,Trusted
+run-003,0.333333,0.333333,0.0,High Risk,High Risk
+run-004,1.0,1.0,0.0,Trusted,Trusted
+run-005,1.0,1.0,0.0,Trusted,Trusted
+run-006,0.863636,0.863636,0.0,Low Risk,Low Risk
+run-007,1.0,1.0,0.0,Trusted,Trusted
+run-008,0.555556,0.555556,0.0,Moderate Risk,Moderate Risk
+run-009,1.0,1.0,0.0,Trusted,Trusted
+run-010,1.0,1.0,0.0,Trusted,Trusted
+run-011,1.0,1.0,0.0,Trusted,Trusted
+run-012,0.433333,0.433333,0.0,High Risk,High Risk
+run-013,1.0,1.0,0.0,Trusted,Trusted
+run-014,1.0,1.0,0.0,Trusted,Trusted
+run-015,1.0,1.0,0.0,Trusted,Trusted
+run-016,0.333333,0.377778,0.044444,High Risk,High Risk
+run-017,1.0,1.0,0.0,Trusted,Trusted
+run-018,0.515152,0.606061,0.090909,Moderate Risk,Moderate Risk
+run-019,1.0,1.0,0.0,Trusted,Trusted
+run-020,0.0,0.0,0.0,High Risk,High Risk
+run-021,1.0,1.0,0.0,Trusted,Trusted

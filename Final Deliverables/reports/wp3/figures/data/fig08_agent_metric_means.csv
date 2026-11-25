@@ -1,0 +1,15 @@
+agent_config,metric_id,mean_score
+Agent_A_Baseline,DM-001,0.883333
+Agent_A_Baseline,PIR-001,0.5
+Agent_A_Baseline,UAE-001,0.843333
+Agent_A_Baseline,SIL-001,0.45
+Agent_A_Baseline,MI-001,0.0
+Agent_A_Baseline,EA-001,0.89
+Agent_A_Baseline,ETL-001,0.0
+Agent_B_Filtered,DM-001,1.0
+Agent_B_Filtered,PIR-001,1.0
+Agent_B_Filtered,UAE-001,1.0
+Agent_B_Filtered,SIL-001,1.0
+Agent_B_Filtered,MI-001,1.0
+Agent_B_Filtered,EA-001,1.0
+Agent_B_Filtered,ETL-001,1.0
